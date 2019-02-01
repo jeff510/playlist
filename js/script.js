@@ -1,34 +1,82 @@
-/* global $ */
+var songs = [
+    "on Me",
+    "Lifestyle",
+    "Can't",
+    "No Discussion"
+];
 
-// BELOW Update the songs array with four of your favorites songs.
-var songs = [];
-// BELOW Add 4 More arrays to store images_links, artists, song lengths, and links for each song
-// Make sure they match the same order as your array above
+var artists = [
+    "SOB RBE",
+    "SOB RBE",
+    "SOB RBE",
+    "SOB RBE"
+];
 
+var images = [
+    "https://media.pitchfork.com/photos/5a834ab0aed392225cc0d9fb/1:1/w_320/SOBxRBE_Gangin.jpg",
+    "https://media.pitchfork.com/photos/5a834ab0aed392225cc0d9fb/1:1/w_320/SOBxRBE_Gangin.jpg",
+    "https://media.pitchfork.com/photos/5a834ab0aed392225cc0d9fb/1:1/w_320/SOBxRBE_Gangin.jpg",
+    "https://media.pitchfork.com/photos/5a834ab0aed392225cc0d9fb/1:1/w_320/SOBxRBE_Gangin.jpg"
+];
 
+var links = [
+    "https://www.youtube.com/watch?v=hrAAscPsYsI",
+    "https://www.youtube.com/watch?v=KjUNuvVeP7I",
+    "https://www.youtube.com/watch?v=G2NaDv015jQ",
+    "https://www.youtube.com/watch?v=bS7y2lEMbJc"
+];
+
+var lengths = [
+    150,
+    309,
+    324,
+    324
+];
 
 function displaySongInfo(){
-    // BELOW Use forEach Loop to display the data from each of your arrays in the correct div
+    images.forEach(function(image) {
+        $("#images").append("<img src='" + image + "'>");   
+    });
 
+    songs.forEach(function(song) {
+        $("#songs").append("<p>" + song + "</p>"); 
+    });
+
+    artists.forEach(function(artist) {
+        $("#artists").append("<p> By: " + artist + "</p>");   
+    });
+
+    lengths.forEach(function(length) {
+        $("#lengths").append("<p>" + length + "</p>"); 
+    });
+
+    links.forEach(function(link) {
+        $("#links").append("<a href='" + link + "'> Listen </a>"); 
+    });
 }
 
 function emptySongInfo(){
+    $("#images").empty();
     $("#songs").empty();
-    // Use jQuery to empty all of the remaining divs
-
-
-}
-
-
-function addSongInfo(){
-    // BELOW write the code to add new items to each of the arrays.
-
-
+    $("#artists").empty();
+    $("#lengths").empty();
+    $("#links").empty();
 }
 
 $("#add").click(function() {
-    emptySongInfo();
-    addSongInfo();
+    var songName = $("#song").val();
+    var imageUrl = $("#image").val();
+    var artistName = $("#artist").val();
+    var songLength = $("#length").val();
+    var link = $("#links").val();
+
+    songs.push(songName);
+    artists.push(artistName);
+    images.push(imageUrl);
+    lengths.push(songLength);
+    links.push(link);
+
+    emptySongInfo()
     displaySongInfo();
 });
 
